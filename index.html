@@ -36,7 +36,7 @@ if( window.location.search.match( /print-pdf/gi ) ) {
 
 <!-- Loading the mathjax macro -->
 <!-- Load mathjax -->
-    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
     <!-- MathJax configuration -->
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -58,7 +58,7 @@ if( window.location.search.match( /print-pdf/gi ) ) {
     <!-- End of mathjax configuration -->
 
 <!-- Get Font-awesome from cdn -->
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.css">
 
 <style type="text/css">
     /*!
@@ -67,8 +67,8 @@ if( window.location.search.match( /print-pdf/gi ) ) {
 *
 */
 /*!
- * Bootstrap v3.3.6 (http://getbootstrap.com)
- * Copyright 2011-2015 Twitter, Inc.
+ * Bootstrap v3.3.7 (http://getbootstrap.com)
+ * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
@@ -1163,7 +1163,6 @@ a:focus {
   text-decoration: underline;
 }
 a:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -2592,7 +2591,6 @@ select[size] {
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -3083,7 +3081,6 @@ select[multiple].input-lg {
 .btn.focus,
 .btn:active.focus,
 .btn.active.focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -8814,6 +8811,9 @@ body > #header .header-bar {
     margin-left: 10px;
   }
 }
+[dir="rtl"] #ipython_notebook {
+  float: right !important;
+}
 #noscript {
   width: auto;
   padding-top: 16px;
@@ -9016,8 +9016,14 @@ span#login_widget > .button .badge,
  *
  * Author: Jupyter Development Team
  */
+[dir="rtl"] #tabs li {
+  float: right;
+}
 ul#tabs {
   margin-bottom: 4px;
+}
+[dir="rtl"] ul#tabs {
+  margin-right: 0px;
 }
 ul#tabs a {
   padding-top: 6px;
@@ -9040,6 +9046,16 @@ ul.breadcrumb span {
 }
 .list_toolbar .tree-buttons {
   padding-top: 1px;
+}
+[dir="rtl"] .list_toolbar .tree-buttons {
+  float: left !important;
+}
+[dir="rtl"] .list_toolbar .pull-right {
+  padding-top: 1px;
+  float: left !important;
+}
+[dir="rtl"] .list_toolbar .pull-left {
+  float: right !important;
 }
 .dynamic-buttons {
   padding-top: 3px;
@@ -9176,6 +9192,9 @@ ul.breadcrumb span {
 #tree-selector {
   padding-right: 0px;
 }
+[dir="rtl"] #tree-selector a {
+  float: right;
+}
 #button-select-all {
   min-width: 50px;
 }
@@ -9265,6 +9284,9 @@ ul#new-menu {
   left: auto;
   right: 0;
 }
+[dir="rtl"] #new-menu {
+  text-align: right;
+}
 .kernel-menu-icon {
   padding-right: 12px;
   width: 24px;
@@ -9309,6 +9331,9 @@ ul#new-menu {
 }
 #running .panel-group .panel .panel-body .list_container .list_item:last-child {
   border-bottom: 0px;
+}
+[dir="rtl"] #running .col-sm-8 {
+  float: right !important;
 }
 .delete-button {
   display: none;
@@ -9605,6 +9630,7 @@ div.cell.selected.jupyter-soft-selected {
   }
 }
 div.inner_cell {
+  min-width: 0;
   /* Old browsers */
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -9625,11 +9651,6 @@ div.inner_cell {
   box-flex: 1;
   /* Modern browsers */
   flex: 1;
-}
-@-moz-document url-prefix() {
-  div.inner_cell {
-    overflow-x: hidden;
-  }
 }
 /* input_area and input_prompt must match in top border and margin for alignment */
 div.input_area {
@@ -11300,7 +11321,7 @@ div#pager .ui-resizable-handle::after {
 }
 .shortcut_key {
   display: inline-block;
-  width: 20ex;
+  width: 21ex;
   text-align: right;
   font-family: monospace;
 }
@@ -11612,6 +11633,7 @@ ul.typeahead-list > li > a {
   box-shadow: 0px 0px 12px 1px rgba(87, 87, 87, 0.2);
 }
 .terminal-app .terminal {
+  width: 100%;
   float: left;
   font-family: monospace;
   color: white;
@@ -11625,6 +11647,9 @@ ul.typeahead-list > li > a {
 .terminal-app .terminal dummy-screen {
   line-height: 1em;
   font-size: 14px;
+}
+.terminal-app .terminal .xterm-rows {
+  padding: 10px;
 }
 .terminal-app .terminal-cursor {
   color: black;
@@ -11685,8 +11710,10 @@ ul.typeahead-list > li > a {
 .highlight .mh { color: #666666 } /* Literal.Number.Hex */
 .highlight .mi { color: #666666 } /* Literal.Number.Integer */
 .highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
 .highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
 .highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
 .highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
 .highlight .s2 { color: #BA2121 } /* Literal.String.Double */
 .highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
@@ -11697,9 +11724,11 @@ ul.typeahead-list > li > a {
 .highlight .s1 { color: #BA2121 } /* Literal.String.Single */
 .highlight .ss { color: #19177C } /* Literal.String.Symbol */
 .highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
 .highlight .vc { color: #19177C } /* Name.Variable.Class */
 .highlight .vg { color: #19177C } /* Name.Variable.Global */
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
     </style>
 <style type="text/css">
@@ -11826,8 +11855,7 @@ a.anchor-link {
 <div class="slides">
 <aside class="notes">
 
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11841,12 +11869,11 @@ a.anchor-link {
 </div>
 </div>
 </aside><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="-Doing-Math-with-Python-"><center> Doing Math with Python </center><a class="anchor-link" href="#-Doing-Math-with-Python-">&#182;</a></h1><center>
+<h1 id="-Doing-Math-with-Python-"><center> Doing Math with Python </center><a class="anchor-link" href="#-Doing-Math-with-Python-">&#194;&#182;</a></h1><center>
 
 
 <p> <b>Amit Saha</b>
@@ -11858,12 +11885,11 @@ a.anchor-link {
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="About-me">About me<a class="anchor-link" href="#About-me">&#182;</a></h2><ul>
+<h2 id="About-me">About me<a class="anchor-link" href="#About-me">&#194;&#182;</a></h2><ul>
 <li><p>Software Engineer at <a href="https://www.freelancer.com">Freelancer.com</a> HQ in Sydney, Australia</p>
 </li>
 <li><p>Author of "Doing Math with Python" (No Starch Press, 2015)</p>
@@ -11873,7 +11899,7 @@ a.anchor-link {
 <li><p><a href="http://echorand.me">Blog</a>, <a href="http://github.com/amitsaha">GitHub</a></p>
 </li>
 </ul>
-<h4 id="Contact">Contact<a class="anchor-link" href="#Contact">&#182;</a></h4><ul>
+<h4 id="Contact">Contact<a class="anchor-link" href="#Contact">&#194;&#182;</a></h4><ul>
 <li><p><a href="http://twitter.com/echorand">@echorand</a></p>
 </li>
 <li><p><a href="mailto:amitsaha.in@gmail.com">Email</a></p>
@@ -11883,8 +11909,7 @@ a.anchor-link {
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11896,8 +11921,7 @@ a.anchor-link {
 </div>
 </div><aside class="notes">
 
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11910,23 +11934,21 @@ a.anchor-link {
 </div>
 </div>
 </aside></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="This-talk---a-proposal,-a-hypothesis,-a-statement">This talk - a proposal, a hypothesis, a statement<a class="anchor-link" href="#This-talk---a-proposal,-a-hypothesis,-a-statement">&#182;</a></h3><p>What? <em>Python can lead to a more enriching learning and teaching experience in the classroom</em></p>
+<h3 id="This-talk---a-proposal,-a-hypothesis,-a-statement">This talk - a proposal, a hypothesis, a statement<a class="anchor-link" href="#This-talk---a-proposal,-a-hypothesis,-a-statement">&#194;&#182;</a></h3><p>What? <em>Python can lead to a more enriching learning and teaching experience in the classroom</em></p>
 <p>How? <em>Next slides</em></p>
 
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Tools-(or,-Giant-shoulders-we-will-stand-on)">Tools (or, Giant shoulders we will stand on)<a class="anchor-link" href="#Tools-(or,-Giant-shoulders-we-will-stand-on)">&#182;</a></h3><p><img align="center" src="images/giant_shoulders_collage.jpg"></img></p>
+<h3 id="Tools-(or,-Giant-shoulders-we-will-stand-on)">Tools (or, Giant shoulders we will stand on)<a class="anchor-link" href="#Tools-(or,-Giant-shoulders-we-will-stand-on)">&#194;&#182;</a></h3><p><img align="center" src="images/giant_shoulders_collage.jpg"></img></p>
 <p><em>Python 3</em>, <em>SymPy</em>, <em>matplotlib</em></p>
 <p>*Individual logos are copyright of the respective projects. <a href="http://www.orphancaremovement.org/standing-on-the-shoulder-of-giants/">Source</a> of the "giant shoulders" image.</p>
 
@@ -11934,8 +11956,7 @@ a.anchor-link {
 </div>
 </div><aside class="notes">
 
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11950,12 +11971,11 @@ a.anchor-link {
 </div>
 </div>
 </aside></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Python---a-scientific-calculator">Python - a scientific calculator<a class="anchor-link" href="#Python---a-scientific-calculator">&#182;</a></h3><p>Whose calculator looks like this?</p>
+<h3 id="Python---a-scientific-calculator">Python - a scientific calculator<a class="anchor-link" href="#Python---a-scientific-calculator">&#194;&#182;</a></h3><p>Whose calculator looks like this?</p>
 <div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="p">(</span><span class="mi">131</span> <span class="o">+</span> <span class="mf">21.5</span> <span class="o">+</span> <span class="mf">100.2</span> <span class="o">+</span> <span class="mf">88.7</span> <span class="o">+</span> <span class="mf">99.5</span> <span class="o">+</span> <span class="mf">100.5</span> <span class="o">+</span> <span class="mf">200.5</span><span class="p">)</span><span class="o">/</span><span class="mi">4</span>
 <span class="mf">185.475</span>
 </pre></div>
@@ -11965,8 +11985,7 @@ a.anchor-link {
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11980,12 +11999,11 @@ a.anchor-link {
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Python---a-scientific-calculator">Python - a scientific calculator<a class="anchor-link" href="#Python---a-scientific-calculator">&#182;</a></h3><ul>
+<h3 id="Python---a-scientific-calculator">Python - a scientific calculator<a class="anchor-link" href="#Python---a-scientific-calculator">&#194;&#182;</a></h3><ul>
 <li><p>Develop your own functions: unit conversion, finding correlation, .., anything really</p>
 </li>
 <li><p>Use PYTHONSTARTUP to extend the battery of readily available mathematical functions</p>
@@ -11997,12 +12015,11 @@ a.anchor-link {
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Unit-conversion-functions">Unit conversion functions<a class="anchor-link" href="#Unit-conversion-functions">&#182;</a></h3><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">unit_conversion</span><span class="p">()</span>
+<h3 id="Unit-conversion-functions">Unit conversion functions<a class="anchor-link" href="#Unit-conversion-functions">&#194;&#182;</a></h3><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">unit_conversion</span><span class="p">()</span>
 <span class="mf">1.</span> <span class="n">Kilometers</span> <span class="n">to</span> <span class="n">Miles</span>
 <span class="mf">2.</span> <span class="n">Miles</span> <span class="n">to</span> <span class="n">Kilometers</span>
 <span class="mf">3.</span> <span class="n">Kilograms</span> <span class="n">to</span> <span class="n">Pounds</span>
@@ -12018,12 +12035,11 @@ a.anchor-link {
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Finding-linear-correlation">Finding linear correlation<a class="anchor-link" href="#Finding-linear-correlation">&#182;</a></h3><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> 
+<h3 id="Finding-linear-correlation">Finding linear correlation<a class="anchor-link" href="#Finding-linear-correlation">&#194;&#182;</a></h3><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> 
 <span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mf">6.1</span><span class="p">,</span> <span class="mf">7.9</span><span class="p">]</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">find_corr_x_y</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
@@ -12034,8 +12050,7 @@ a.anchor-link {
 </div>
 </div><aside class="notes">
 
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12049,12 +12064,11 @@ a.anchor-link {
 </div>
 </div>
 </aside></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Python---a-really-fancy-calculator">Python - a really fancy calculator<a class="anchor-link" href="#Python---a-really-fancy-calculator">&#182;</a></h3><p>SymPy - a pure Python symbolic math library</p>
+<h3 id="Python---a-really-fancy-calculator">Python - a really fancy calculator<a class="anchor-link" href="#Python---a-really-fancy-calculator">&#194;&#182;</a></h3><p>SymPy - a pure Python symbolic math library</p>
 <p><em>from sympy import awesomeness</em>  - don't try that :)</p>
 
 </div>
@@ -12080,7 +12094,11 @@ a.anchor-link {
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
 
 
 <div class="output_png output_subarea ">
@@ -12286,7 +12304,11 @@ CLwYM8wAAAAASUVORK5CYII=
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[13]:</div>
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[13]:</div>
+
+
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12319,7 +12341,11 @@ CLwYM8wAAAAASUVORK5CYII=
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[24]:</div>
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[24]:</div>
+
+
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12353,7 +12379,11 @@ CLwYM8wAAAAASUVORK5CYII=
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[2]:</div>
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[2]:</div>
+
+
 
 
 <div class="output_latex output_subarea output_execute_result">
@@ -12387,7 +12417,11 @@ $$\left(\frac{\left(2 x + 1\right) \cos{\left (x \right )}}{\sin{\left (x \right
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[16]:</div>
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[16]:</div>
+
+
 
 
 <div class="output_latex output_subarea output_execute_result">
@@ -12420,7 +12454,11 @@ $$\frac{2 x^{\frac{3}{2}}}{3}$$
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[19]:</div>
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[19]:</div>
+
+
 
 
 <div class="output_latex output_subarea output_execute_result">
@@ -12434,8 +12472,7 @@ $$\frac{4 \sqrt{2}}{3}$$
 
 </div><aside class="notes">
 
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12446,8 +12483,7 @@ $$\frac{4 \sqrt{2}}{3}$$
 </div>
 </div>
 </aside></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12456,8 +12492,7 @@ $$\frac{4 \sqrt{2}}{3}$$
 </div>
 </div><aside class="notes">
 
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12470,12 +12505,11 @@ $$\frac{4 \sqrt{2}}{3}$$
 </div>
 </div>
 </aside></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Python---Making-other-subjects-more-lively">Python - Making other subjects more lively<a class="anchor-link" href="#Python---Making-other-subjects-more-lively">&#182;</a></h3><p><img align="center" src="images/collage1.png"></img></p>
+<h3 id="Python---Making-other-subjects-more-lively">Python - Making other subjects more lively<a class="anchor-link" href="#Python---Making-other-subjects-more-lively">&#194;&#182;</a></h3><p><img align="center" src="images/collage1.png"></img></p>
 <ul>
 <li><p>matplotlib</p>
 </li>
@@ -12488,12 +12522,11 @@ $$\frac{4 \sqrt{2}}{3}$$
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Bringing-Science-to-life">Bringing Science to life<a class="anchor-link" href="#Bringing-Science-to-life">&#182;</a></h4><p><em>Animation of a Projectile motion</em> <a href="https://github.com/doingmathwithpython/pycon-us-2016/blob/master/py-files/projectile_animation.py">(Python Source)</a></p>
+<h4 id="Bringing-Science-to-life">Bringing Science to life<a class="anchor-link" href="#Bringing-Science-to-life">&#194;&#182;</a></h4><p><em>Animation of a Projectile motion</em> <a href="https://github.com/doingmathwithpython/pycon-us-2016/blob/master/py-files/projectile_animation.py">(Python Source)</a></p>
 
 </div>
 </div>
@@ -12515,7 +12548,11 @@ $$\frac{4 \sqrt{2}}{3}$$
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[3]:</div>
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[3]:</div>
+
+
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 
@@ -12535,30 +12572,27 @@ $$\frac{4 \sqrt{2}}{3}$$
 </div>
 
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Exploring-Fractals-in-Nature">Exploring Fractals in Nature<a class="anchor-link" href="#Exploring-Fractals-in-Nature">&#182;</a></h4><p><em>Interactively drawing a Barnsley Fern</em> <a href="https://github.com/doingmathwithpython/pycon-us-2016/blob/master/notebooks/Interactive%20Barnsley%20Fern.ipynb">(Notebook)</a></p>
+<h4 id="Exploring-Fractals-in-Nature">Exploring Fractals in Nature<a class="anchor-link" href="#Exploring-Fractals-in-Nature">&#194;&#182;</a></h4><p><em>Interactively drawing a Barnsley Fern</em> <a href="https://github.com/doingmathwithpython/pycon-us-2016/blob/master/notebooks/Interactive%20Barnsley%20Fern.ipynb">(Notebook)</a></p>
 <p><img align="center" src="images/fern.jpg" width="400" ></img></p>
 
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="The-world-is-your-graph-paper">The world is your graph paper<a class="anchor-link" href="#The-world-is-your-graph-paper">&#182;</a></h4><p><em>Showing places on a digital map</em> <a href="https://github.com/doingmathwithpython/pycon-us-2016/blob/master/notebooks/Maps%20using%20Basemap%20-%20demo.ipynb">(Notebook)</a></p>
+<h4 id="The-world-is-your-graph-paper">The world is your graph paper<a class="anchor-link" href="#The-world-is-your-graph-paper">&#194;&#182;</a></h4><p><em>Showing places on a digital map</em> <a href="https://github.com/doingmathwithpython/pycon-us-2016/blob/master/notebooks/Maps%20using%20Basemap%20-%20demo.ipynb">(Notebook)</a></p>
 
 </div>
 </div>
 </div><aside class="notes">
 
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12572,12 +12606,11 @@ $$\frac{4 \sqrt{2}}{3}$$
 </div>
 </div>
 </aside></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Book:-Doing-Math-With-Python">Book: Doing Math With Python<a class="anchor-link" href="#Book:-Doing-Math-With-Python">&#182;</a></h3><p><img align="center" src="images/dmwp-cover.png" href="https://doingmathwithpython.github.io"></img></p>
+<h3 id="Book:-Doing-Math-With-Python">Book: Doing Math With Python<a class="anchor-link" href="#Book:-Doing-Math-With-Python">&#194;&#182;</a></h3><p><img align="center" src="images/dmwp-cover.png" href="https://doingmathwithpython.github.io"></img></p>
 <p>Overview</p>
 <ul>
 <li><p>All of what I have discussed so far</p>
@@ -12591,20 +12624,18 @@ $$\frac{4 \sqrt{2}}{3}$$
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Comments">Comments<a class="anchor-link" href="#Comments">&#182;</a></h4><blockquote><p>Saha does an excellent job providing a clear link between Python and upper-level math concepts, and demonstrates how Python can be transformed into a mathematical stage. This book deserves a spot on every geometry teacher’s bookshelf.</p>
+<h4 id="Comments">Comments<a class="anchor-link" href="#Comments">&#194;&#182;</a></h4><blockquote><p>Saha does an excellent job providing a clear link between Python and upper-level math concepts, and demonstrates how Python can be transformed into a mathematical stage. This book deserves a spot on every geometry teacher’s bookshelf.</p>
 </blockquote>
 <p><a href="http://www.slj.com/2016/05/collection-development/read-watch-alikes/coding-lets-begin/#_">School Library Journal</a></p>
 
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12614,8 +12645,7 @@ $$\frac{4 \sqrt{2}}{3}$$
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12625,8 +12655,7 @@ $$\frac{4 \sqrt{2}}{3}$$
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12636,8 +12665,7 @@ $$\frac{4 \sqrt{2}}{3}$$
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12648,8 +12676,7 @@ $$\frac{4 \sqrt{2}}{3}$$
 </div>
 </div><aside class="notes">
 
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12663,43 +12690,39 @@ $$\frac{4 \sqrt{2}}{3}$$
 </div>
 </div>
 </aside></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Great-base-for-the-future">Great base for the future<a class="anchor-link" href="#Great-base-for-the-future">&#182;</a></h3><p><em>Statistics and Graphing data</em> -&gt; <em>Data Science</em></p>
+<h3 id="Great-base-for-the-future">Great base for the future<a class="anchor-link" href="#Great-base-for-the-future">&#194;&#182;</a></h3><p><em>Statistics and Graphing data</em> -&gt; <em>Data Science</em></p>
 <p><em>Differential Calculus</em> -&gt; <em>Machine learning</em></p>
 
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Application-of-differentiation">Application of differentiation<a class="anchor-link" href="#Application-of-differentiation">&#182;</a></h3><p>Use gradient descent to find a function's minimum value <a href="https://github.com/doingmathwithpython/pycon-us-2016/blob/master/notebooks/Gradient%20Descent.ipynb">(Notebook)</a></p>
+<h3 id="Application-of-differentiation">Application of differentiation<a class="anchor-link" href="#Application-of-differentiation">&#194;&#182;</a></h3><p>Use gradient descent to find a function's minimum value <a href="https://github.com/doingmathwithpython/pycon-us-2016/blob/master/notebooks/Gradient%20Descent.ipynb">(Notebook)</a></p>
 
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Predict-the-college-admission-score-based-on-high-school-math-score">Predict the college admission score based on high school math score<a class="anchor-link" href="#Predict-the-college-admission-score-based-on-high-school-math-score">&#182;</a></h3><p>Use gradient descent as the optimizer for single variable linear regression model <a href="https://github.com/doingmathwithpython/pycon-us-2016/blob/master/notebooks/Simple%20Linear%20Regression.ipynb">(Notebook)</a></p>
+<h3 id="Predict-the-college-admission-score-based-on-high-school-math-score">Predict the college admission score based on high school math score<a class="anchor-link" href="#Predict-the-college-admission-score-based-on-high-school-math-score">&#194;&#182;</a></h3><p>Use gradient descent as the optimizer for single variable linear regression model <a href="https://github.com/doingmathwithpython/pycon-us-2016/blob/master/notebooks/Simple%20Linear%20Regression.ipynb">(Notebook)</a></p>
 
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Advanced-libraries">Advanced libraries<a class="anchor-link" href="#Advanced-libraries">&#182;</a></h3><ul>
+<h3 id="Advanced-libraries">Advanced libraries<a class="anchor-link" href="#Advanced-libraries">&#194;&#182;</a></h3><ul>
 <li><p><a href="https://scipy.org">scipy</a></p>
 </li>
 <li><p><a href="http://www.numpy.org/">numpy</a></p>
@@ -12715,13 +12738,12 @@ $$\frac{4 \sqrt{2}}{3}$$
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Dialogue">Dialogue<a class="anchor-link" href="#Dialogue">&#182;</a></h3><p>Questions, Thoughts, comments, discussions?</p>
-<h4 id="Online">Online<a class="anchor-link" href="#Online">&#182;</a></h4><ul>
+<h3 id="Dialogue">Dialogue<a class="anchor-link" href="#Dialogue">&#194;&#182;</a></h3><p>Questions, Thoughts, comments, discussions?</p>
+<h4 id="Online">Online<a class="anchor-link" href="#Online">&#194;&#182;</a></h4><ul>
 <li><p>Twitter: @echorand</p>
 </li>
 <li><p>Email: amitsaha.in@gmail.com</p>
@@ -12731,12 +12753,11 @@ $$\frac{4 \sqrt{2}}{3}$$
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="PyCon-Special!">PyCon Special!<a class="anchor-link" href="#PyCon-Special!">&#182;</a></h3><p><em>Use PYCONMATH code to get 30% off "Doing Math with Python" from <a href="https://www.nostarch.com/doingmathwithpython">No Starch Press</a></em></p>
+<h3 id="PyCon-Special!">PyCon Special!<a class="anchor-link" href="#PyCon-Special!">&#194;&#182;</a></h3><p><em>Use PYCONMATH code to get 30% off "Doing Math with Python" from <a href="https://www.nostarch.com/doingmathwithpython">No Starch Press</a></em></p>
 <p><img align="center" src="images/dmwp-cover.png" href="https://doingmathwithpython.github.io"></img></p>
 <p>(Valid from  May 26th - June 8th)</p>
 <p>Book Signing - May 31st - 2.00 PM - No Starch Press booth</p>
@@ -12744,18 +12765,16 @@ $$\frac{4 \sqrt{2}}{3}$$
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Acknowledgements">Acknowledgements<a class="anchor-link" href="#Acknowledgements">&#182;</a></h3><p>PyCon US Education Summit team for inviting me</p>
+<h3 id="Acknowledgements">Acknowledgements<a class="anchor-link" href="#Acknowledgements">&#194;&#182;</a></h3><p>PyCon US Education Summit team for inviting me</p>
 
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12764,8 +12783,7 @@ $$\frac{4 \sqrt{2}}{3}$$
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12774,12 +12792,11 @@ $$\frac{4 \sqrt{2}}{3}$$
 </div>
 </div>
 </div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Links">Links<a class="anchor-link" href="#Links">&#182;</a></h3><ul>
+<h3 id="Links">Links<a class="anchor-link" href="#Links">&#194;&#182;</a></h3><ul>
 <li><p><a href="http://www.oreilly.com/pub/e/3712">Upcoming O'Reilly Webcast</a></p>
 </li>
 <li><p><a href="https://nostarch.com/doingmathwithpython">Doing Math with Python</a></p>
